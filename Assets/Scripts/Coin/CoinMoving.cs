@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class CoinMoving : MonoBehaviour
 {
     public float rotationSpeed = 90f;
     public float movingSpeed =  120f;
@@ -29,14 +29,5 @@ public class Coin : MonoBehaviour
         _position.y = initY + movingRange * Mathf.Sin(timer * movingSpeed);
         timer += Time.deltaTime;
         transform.position = _position;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        var playerMovement = other.GetComponent<PlayerMovement>();
-        if (playerMovement == null) return;
-
-        playerMovement.updateScore();
-        Destroy(gameObject);
     }
 }
